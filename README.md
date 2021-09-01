@@ -1,9 +1,14 @@
-# to-queue-app
+# to-queue-app-keycloak
 
 ## Description
 
-A large task can seem overwhelming when thought of as a whole. With toQueue, users can focus on long-term tasks one step at a time with its simplistic queue-like interface.
+This is an extension of the [to-queue-app](https://github.com/kevjin02/to-queue-app), with a focus on user authentication and deployment. 
 
-This application was built with a MERN stack with data stored in MongoDBAtlas. A live version hosted on Heroku is coming soon.
+In this application, Keycloak is integrated for user authentication, and the front-end,
+back-end, and Keycloak service are placed in Docker containers. These containers are managed by two load balancers through Kubernetes, and deployed to Linode. A live version of the application can be found [here](http://45.79.60.169:3000).
 
-![toQueue image](images/to-queue.png)
+## Images:
+<div>
+  <img src="images/to-queue-keycloak.png" width="400" />
+  <img src="images/to-queue-logout.png" width="400" />
+</div>

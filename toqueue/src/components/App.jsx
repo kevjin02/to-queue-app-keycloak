@@ -32,7 +32,7 @@ class App extends Component {
   componentDidMount() {
     
     axios
-      .get('http://45.79.60.169:8082/api/queues/' + this.state.username)
+      .get('http://localhost:8082/api/queues/' + this.state.username)
       .then(res => {
         
         this.setState({
@@ -52,7 +52,7 @@ class App extends Component {
 
   addQueue = (newQueue) => {
         axios
-                .post('http://45.79.60.169:8082/api/queues/', {qIndex: 0, arrQueue: newQueue}, axiosConfig)
+                .post('http://localhost:8082/api/queues/', {qIndex: 0, arrQueue: newQueue}, axiosConfig)
                 .then(
                   res => {
                   this.setState(prevState => ({
@@ -73,7 +73,7 @@ class App extends Component {
    */
   deleteQueue = (index) => {
       axios
-          .delete('http://45.79.60.169:8082/api/queues/'+ this.state.queues[index]._id, axiosConfig)
+          .delete('http://localhost:8082/api/queues/'+ this.state.queues[index]._id, axiosConfig)
           .then(res => {
             let updatedQueue = this.state.queues.filter((queueItem, i) => {
               return i !== index;
@@ -97,7 +97,7 @@ class App extends Component {
   handleNext = (index) => {
   
       axios
-          .put('http://45.79.60.169:8082/api/queues/'+ this.state.queues[index]._id, {...this.state.queues[index], qIndex: 1+this.state.queues[index].qIndex}, axiosConfig)
+          .put('http://localhost:8082/api/queues/'+ this.state.queues[index]._id, {...this.state.queues[index], qIndex: 1+this.state.queues[index].qIndex}, axiosConfig)
           .then(res => {
             const updatedQueues = [...this.state.queues];
             
