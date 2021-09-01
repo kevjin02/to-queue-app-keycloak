@@ -1,0 +1,28 @@
+version: "3"
+services: 
+  react-app:
+      image: react-app
+      build: ./toqueue/
+      stdin_open: true
+      ports:
+        - "3000:3000"
+      networks: 
+        - toqueueapp
+      volumes:
+        - ./toqueue/:/usr/src/app
+        - /usr/src/app/node_modules
+  api-server:
+      image: api-server
+      build: ./toqueueserver/
+      ports:
+        - "8082:8082"
+      networks:
+        - toqueueapp
+      volumes:
+        - ./toqueueserver/:/usr/src/app
+        - /usr/src/app/node_modules
+
+
+networks:
+  toqueueapp:
+    driver: bridge

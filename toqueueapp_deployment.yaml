@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toqueueapp-deployment
+  labels:
+    app: toqueue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: toqueue
+  template:
+    metadata:
+      labels:
+        app: toqueue
+    spec:
+      containers:
+      - name: toqueue
+        image: kevjin123/toqueueapp:toqueue
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+      - name: api-server
+        image: kevjin123/toqueueapp:api-server
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8082
+      - name: keycloak
+        image: kevjin123/toqueueapp:keycloak
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        
